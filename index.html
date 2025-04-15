@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartamentos Cury | Entrada R$ 800</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo-cury.png" alt="Cury Construtora">
+            </div>
+            <div class="header-contact">
+                <a href="https://wa.me/+5511951947025" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Fale com um consultor
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="carousel">
+        <div><img src="images/image1.jpg" alt="Apartamento Cury 1"></div>
+        <div><img src="images/image2.jpg" alt="Apartamento Cury 2"></div>
+        <div><img src="images/image3.jpg" alt="Apartamento Cury 3"></div>
+        <div><img src="images/image4.jpg" alt="Apartamento Cury 4"></div>
+        <div><img src="images/image5.jpg" alt="Apartamento Cury 5"></div>
+        <div><img src="images/image6.jpg" alt="Apartamento Cury 6"></div>
+        <div><img src="images/image7.jpg" alt="Apartamento Cury 7"></div>
+        <div><img src="images/image8.jpg" alt="Apartamento Cury 8"></div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Seu novo endereço com a qualidade Cury</h1>
+            <h2>Apartamentos com 2 e 3 dormitórios</h2>
+            <p class="destaque">Entrada facilitada de apenas R$ 800,00</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/+5511951947025" class="primary-btn">Agende uma visita</a>
+                <a href="#" class="secondary-btn" onclick="alert('Tour virtual em breve!')">Tour virtual 360°</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="videos">
+        <div class="container">
+            <h2 class="section-title">Vídeos Destacados</h2>
+            <div class="video-grid">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/yydDQz1cYHw" 
+                        title="YouTube video player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen></iframe>
+                    <p>Confira nosso último empreendimento</p>
+                </div>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bJseLX7ot3s" 
+                        title="YouTube video player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen></iframe>
+                    <p>Visita guiada ao apartamento decorado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ia-pericles">
+        <div class="container">
+            <h2>Conheça a IA Péricles</h2>
+            <p>Nosso assistente virtual está disponível para tirar todas as suas dúvidas sobre os apartamentos Cury.</p>
+            <a href="https://wa.me/+5511980000093" class="whatsapp-ia-btn">
+                <i class="fab fa-whatsapp"></i> Falar com Péricles IA
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="images/logo-cury-branco.png" alt="Cury Construtora">
+                <p>Tradição e qualidade há mais de 50 anos</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p><i class="fas fa-phone"></i> (11) 9 5194-7025</p>
+                <p><i class="fas fa-envelope"></i> contato@disparoseguro.shop</p>
+            </div>
+            <div class="footer-social">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/cury.meu_apartamento/" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/periclescorretorcury" target="_blank"><i
+                            class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Cury Construtora. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                arrows: true,
+                adaptiveHeight: true,
+                fade: true,
+                cssEase: 'linear'
+            });
+        });
+    </script>
+</body>
+
+</html>
