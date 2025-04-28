@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com https://www.googletagmanager.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https:;">
+    
     <title>Apartamentos Cury | Entrada R$ 800 | Piso Laminado nos Quartos</title>
     <meta name="description" content="Compre seu apartamento Cury na planta com entrada de R$ 800. Piso laminado nos quartos e documentação inclusa. Financiamento facilitado em São Paulo.">
     <meta name="keywords" content="apartamento na planta, cury construtora, comprar apartamento, entrada facilitada, são paulo, apartamentos 1 dormitório, apartamentos 2 dormitórios, apartamentos 3 dormitórios, piso laminado, documentação inclusa">
@@ -100,15 +102,7 @@
     }
     </script>
     
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-    <!-- End Google Tag Manager -->
-    
-    <!-- Google Ads Account (removido da exibição pública) -->
+    <!-- Google Ads Account -->
     <meta name="google-adsense-account" content="ca-pub-3179137944044922">
     
     <!-- Retell AI Voice Integration -->
@@ -122,7 +116,7 @@
       script.async = true;
       script.onload = function() {
         window.retell.initializeWidget({
-          widgetId: 'RETELL-WIDGET-ID', // Substitua pelo seu widget ID
+          widgetId: 'RETELL-WIDGET-ID',
           inactivityTimeout: 300,
         });
       };
@@ -242,7 +236,7 @@
         </div>
     </section>
     
-    <!-- Seção Piso Laminado (corrigida) -->
+    <!-- Seção Piso Laminado -->
     <section class="piso-section">
         <div class="container">
             <h2 class="section-title">Piso Laminado nos Quartos</h2>
@@ -257,11 +251,7 @@
                     </ul>
                 </div>
                 <div class="piso-image">
-                    <img src="images/laminado.png" 
-     alt="Piso laminado de alta qualidade nos quartos" 
-     loading="lazy"
-     width="800"  <!-- Mantenha proporção original -->
-     height="600"> <!-- Ex: 4:3 = 800x600 -->
+                    <img src="images/laminado.png" alt="Piso laminado de alta qualidade nos quartos" loading="lazy" width="800" height="600">
                 </div>
             </div>
         </div>
@@ -464,171 +454,12 @@
         </div>
     </div>
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-        gtag('config', 'AW-3179137944'); // Configuração para Google Ads
-    </script>
-    
     <!-- jQuery e Slick JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" onload="console.log('jQuery carregado com sucesso')" onerror="console.error('Erro ao carregar jQuery')"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" onload="console.log('Slick carregado com sucesso')" onerror="console.error('Erro ao carregar Slick')"></script>
     
-    <script>
-        $(document).ready(function () {
-            // Log para verificar o carregamento do DOM
-            console.log('DOM carregado');
-            console.log('Conteúdo do body:', $('body').html());
-            
-            // Inicialização do carrossel
-            $('.carousel').slick({
-                dots: true,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 4000,
-                arrows: true,
-                adaptiveHeight: true,
-                fade: true,
-                cssEase: 'linear',
-                lazyLoad: 'ondemand'
-            });
-            
-            // Accordion functionality
-            $('.accordion-header').click(function() {
-                console.log('Accordion clicado:', $(this).text());
-                $(this).toggleClass('active');
-                $(this).next('.accordion-content').toggleClass('active');
-                
-                // Registro de evento GA
-                gtag('event', 'faq_click', {
-                    'event_category': 'engagement',
-                    'event_label': $(this).text()
-                });
-            });
-            
-            // Verificação de carregamento
-            console.log('jQuery carregado:', typeof jQuery !== 'undefined');
-            console.log('Slick carregado:', typeof $.fn.slick !== 'undefined');
-            console.log('Elementos FAQ:', $('.faq-section').length);
-            console.log('Elementos Accordion:', $('.accordion-item').length);
-            console.log('Headers Accordion:', $('.accordion-header').length);
-            console.log('Contents Accordion:', $('.accordion-content').length);
-            
-            // Política de Privacidade Modal
-            if (!localStorage.getItem('cookiesAccepted')) {
-                $('#privacy-modal').css('display', 'block');
-            }
-            
-            // Fechar modal ao clicar no X
-            $('.close').click(function() {
-                $('#privacy-modal').css('display', 'none');
-            });
-            
-            // Aceitar cookies
-            $('#accept-cookies').click(function() {
-                localStorage.setItem('cookiesAccepted', 'true');
-                $('#privacy-modal').css('display', 'none');
-            });
-            
-            // N8N Form Integration
-            // Show form after 15 seconds
-            setTimeout(function() {
-                $('#n8n-form-container').addClass('show-modal');
-            }, 15000);
-            
-            // Close modal
-            $('.close-modal').click(function() {
-                $('#n8n-form-container').removeClass('show-modal');
-            });
-            
-            // Formatação de telefone no padrão E.164
-            $('#telefone').on('input', function() {
-                let telefone = $(this).val().replace(/\D/g, '');
-                
-                // Se começar com 0, remover
-                if (telefone.startsWith('0')) {
-                    telefone = telefone.substring(1);
-                }
-                
-                // Se não começar com 55, adicionar
-                if (!telefone.startsWith('55')) {
-                    telefone = '55' + telefone;
-                }
-                
-                // Formatar para exibição (mantendo E.164 para submissão)
-                let formattedDisplay;
-                if (telefone.length > 12) {
-                    // Com 9º dígito
-                    formattedDisplay = `+${telefone.substring(0, 2)} (${telefone.substring(2, 4)}) ${telefone.substring(4, 9)}-${telefone.substring(9)}`;
-                } else {
-                    // Sem 9º dígito ou incompleto
-                    formattedDisplay = `+${telefone.substring(0, 2)} (${telefone.substring(2, 4)}) ${telefone.substring(4, 8)}-${telefone.substring(8)}`;
-                }
-                
-                // Atualizar o campo com o formato para visualização
-                $(this).val(formattedDisplay);
-                // Armazenar o formato E.164 para submissão
-                $(this).data('e164', '+' + telefone);
-            });
-            
-            // Form submission
-            $('#lead-capture-form').submit(function(e) {
-                e.preventDefault();
-                
-                // Usar o formato E.164 armazenado no data attribute
-                const telefoneE164 = $('#telefone').data('e164') || ('+55' + $('#telefone').val().replace(/\D/g, ''));
-                
-                const formData = {
-                    nome: $('#nome').val(),
-                    telefone: telefoneE164,
-                    email: $('#email').val(),
-                    aceite: $('#aceite-contato').is(':checked'),
-                    origem: 'website_form'
-                };
-                
-                // Envio para o webhook do n8n
-                $.ajax({
-                    url: 'https://seu-servidor-n8n.com/webhook/lead-capture', // Substitua pela URL do seu webhook
-                    type: 'POST',
-                    data: JSON.stringify(formData),
-                    contentType: 'application/json',
-                    success: function(response) {
-                        $('#lead-capture-form').html('<div class="success-message"><p>Obrigado! Em breve você receberá nossas ofertas exclusivas.</p></div>');
-                        gtag('event', 'lead_form_success', {
-                            'event_category': 'conversion',
-                            'event_label': 'form_n8n'
-                        });
-                    },
-                    error: function(error) {
-                        alert('Ocorreu um erro. Por favor, tente novamente mais tarde.');
-                        gtag('event', 'lead_form_error', {
-                            'event_category': 'error',
-                            'event_label': 'form_n8n'
-                        });
-                    }
-                });
-            });
-            
-            // Monitoramento de tempo de permanência
-            const startTime = new Date();
-            window.addEventListener('beforeunload', function() {
-                const endTime = new Date();
-                const timeSpent = Math.round((endTime - startTime) / 1000);
-                
-                gtag('event', 'time_on_page', {
-                    'event_category': 'engagement',
-                    'value': timeSpent
-                });
-            });
-        });
-    </script>
+    <!-- Nossos scripts -->
+    <script src="js/analytics.js"></script>
+    <script src="js/main.js"></script>
 </body>
-
 </html>
