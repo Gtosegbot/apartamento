@@ -31,4 +31,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, 5000);
 });
+
+// Form submission
+$('#lead-capture-form').submit(function(e) {
+    e.preventDefault();
+    
+    // Usar o formato E.164 armazenado no data attribute
+    const telefoneE164 = $('#telefone').data('e164') || ('+55' + $('#telefone').val().replace(/\D/g, ''));
+    
+    const formData = {
+        nome: $('#nome').val(),
+        telefone: telefoneE164,
+        email: $('#email').val(),
+        aceite: $('#aceite-contato').is(':checked')
+    };
+    
+    // Envio para o servidor Node.js
+    $.ajax({
+        url: 'http://localhost:3000/enviar-email',
+        type: 'POST',
+        data: JSON.stringify(formData),
+        contentType: 'application/json',
+        success: function(response) {
+            $('#lead-capture-form').html('<div class="success-message"><p>Obrigado! Em breve você receberá nossas ofertas exclusivas.</p></div>');
+            gtag('event', 'lead_form_success', {
+                'event_category': 'conversion',
+                'event_label': 'form_email'
+            });
+        },
+        error: function(error) {
+            alert('Ocorreu um erro. Por favor, tente novamente mais tarde.');
+            gtag('event', 'lead_form_error', {
+                'event_category': 'error',
+                'event_label': 'form_email'
+            });
+        }
+    });
+});
 EOF
