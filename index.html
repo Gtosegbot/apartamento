@@ -237,7 +237,7 @@
                         </ul>
                     </div>
                     <div class="piso-image">
-                        <img src="images/piso-laminado.jpg" alt="Piso Laminado nos Quartos" loading="lazy">
+                        <img src="images/laminado.png" alt="Piso Laminado nos Quartos" loading="lazy" style="max-width: 100%; height: auto;">
                     </div>
                 </div>
             </div>
@@ -445,9 +445,10 @@
                 nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>'
             });
 
-            // Accordion FAQ
-            $('.accordion-header').click(function(){
-                $(this).toggleClass('active').next('.accordion-content').slideToggle(300);
+            // Accordion FAQ - Correção para garantir que as respostas sejam exibidas
+            $('.accordion-header').on('click', function(){
+                $(this).toggleClass('active');
+                $(this).next('.accordion-content').slideToggle(300);
             });
 
             // Modal Form
