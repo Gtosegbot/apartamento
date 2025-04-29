@@ -27,15 +27,16 @@ const transporter = nodemailer.createTransport({
 
 // Configuração do Salesforce
 const conn = new jsforce.Connection({
-    loginUrl: 'https://login.salesforce.com'
+    loginUrl: 'https://login.salesforce.com',
+    instanceUrl: 'https://gtosegbot-acuh.my.salesforce.com'
 });
 
 // Função para autenticar no Salesforce
 async function authenticateSalesforce() {
     try {
         await conn.login(
-            'seu_usuario@seu_dominio.com',
-            'sua_senha' + 'seu_token_seguranca'
+            'gtosegbot-acuh@force.com',
+            'Bot241223seGgto!!'
         );
         console.log('Autenticado no Salesforce com sucesso!');
     } catch (error) {
