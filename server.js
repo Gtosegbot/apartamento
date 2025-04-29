@@ -1,42 +1,60 @@
+require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const jsforce = require('jsforce');
 const path = require('path');
+const helmet = require('helmet');
+const compression = require('compression');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
+// Middleware de segurança
+app.use(helmet());
+app.use(compression());
+app.use(cors({
+    origin: process.env.NODE_ENV === 'production' 
+        ? ['https://comprar-apartamento-na-planta.com']
+        : '*'
+}));
+
+// Limite de requisições
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutos
+    max: 100 // limite de 100 requisições por IP
+});
+app.use(limiter);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuração do SMTP Zoho
 const transporter = nodemailer.createTransport({
-    host: 'smtp.zoho.com',
-    port: 587,
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
     secure: false,
     auth: {
-        user: 'comercial@disparoseguro.shop',
-        pass: 'Bot241223seGgto!'
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
     }
 });
 
 // Configuração do Salesforce
 const conn = new jsforce.Connection({
     loginUrl: 'https://login.salesforce.com',
-    instanceUrl: 'https://gtosegbot-acuh.my.salesforce.com'
+    instanceUrl: process.env.SF_INSTANCE_URL
 });
 
 // Função para autenticar no Salesforce
 async function authenticateSalesforce() {
     try {
         await conn.login(
-            'gtosegbot-acuh@force.com',
-            'Bot241223seGgto!!'
+            process.env.SF_USERNAME,
+            process.env.SF_PASSWORD
         );
         console.log('Autenticado no Salesforce com sucesso!');
     } catch (error) {
@@ -51,8 +69,8 @@ app.post('/enviar-email', async (req, res) => {
     try {
         // Envio do e-mail
         const mailOptions = {
-            from: 'comercial@disparoseguro.shop',
-            to: 'comercial@disparoseguro.shop',
+            from: process.env.SMTP_USER,
+            to: process.env.SMTP_USER,
             subject: 'Novo Lead - Apartamentos Cury',
             html: `
                 <h2>Novo Lead Recebido</h2>
@@ -116,7 +134,19 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Iniciar servidor
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+// Tratamento de erros
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ success: false, message: 'Erro interno do servidor' });
 });
+
+// Iniciar servidor
+if (process.env.NODE_ENV === 'production') {
+    app.listen(PORT, () => {
+        console.log(`Servidor rodando em produção na porta ${PORT}`);
+    });
+} else {
+    app.listen(PORT, () => {
+        console.log(`Servidor rodando em desenvolvimento na porta ${PORT}`);
+    });
+}
